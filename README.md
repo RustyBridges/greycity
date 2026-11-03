@@ -16,6 +16,21 @@ Needs Rust (stable). On Linux you also need the usual GL/X11 dev libraries
 cargo run --release -p greycity
 ```
 
+### NixOS / Nix
+
+The repo is a flake. Run it straight from GitHub:
+
+```bash
+nix run github:RustyBridges/greycity
+```
+
+Or from a checkout: `nix run` (game), `nix run .#headless -- --days 7`
+(simulation log), `nix build` (installs to `./result`), and `nix develop`
+(a dev shell with cargo, rust-analyzer and the GL/X11 libraries set up, so
+`cargo run --release -p greycity` works). On NixOS this needs
+`hardware.graphics.enable = true;` (usually already on with any desktop).
+Under Wayland the game runs through XWayland.
+
 Headless city simulation (no window, player on autopilot, prints every event):
 
 ```bash
