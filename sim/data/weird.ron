@@ -1,0 +1,21 @@
+// Strange things that happen in the city. One may be rolled each hour.
+//   {person}   = a random living resident
+//   {building} = a random building name
+// effects: Message, StressAll(n), StressPlayer(n), HumTouch (someone hears the hum and acts on it),
+//          ElectricalFire, Windfall(amount), Doppelganger
+[
+    (weight: 3, effect: Message,          text: "All the pigeons in the park are facing the same direction."),
+    (weight: 3, effect: StressPlayer(4),  text: "A man in a grey coat asks you what year it is. When you answer, he looks disappointed."),
+    (weight: 2, effect: StressAll(3),     text: "The streetlights flicker in a pattern. Some people stop walking to count."),
+    (weight: 2, effect: Message,          text: "For one minute, every radio in the city plays the same song. Nobody can name it afterwards."),
+    (weight: 2, effect: Message,          text: "A sinkhole the size of a dinner plate opens outside {building}. Someone has already put a traffic cone in it."),
+    (weight: 2, effect: Message,          text: "The sky is the colour of a dead television. It has been for a while."),
+    (weight: 2, effect: Message,          text: "A flyer on a lamppost reads: HAVE YOU SEEN {person}? The photo is of a different person."),
+    (weight: 1, effect: StressAll(5),     text: "The hum is louder today. People pretend it isn't."),
+    (weight: 1, effect: Message,          text: "Somebody has written 'IT WAS ALWAYS LIKE THIS' on the wall of {building}. The paint is still wet."),
+    (weight: 2, effect: HumTouch,         text: "{person} stops mid-sentence, tilts their head, and listens to something nobody else can hear."),
+    (weight: 2, effect: ElectricalFire,   text: "There is a smell of burning dust somewhere inside {building}."),
+    (weight: 1, effect: Windfall(200),    text: "{person} finds an envelope of cash in a library book. They tell no one. Everyone knows by dinner."),
+    (weight: 2, effect: Doppelganger,     text: "You see {person} across the street. You are almost certain {person} is also standing behind you."),
+    (weight: 1, effect: StressPlayer(-5), text: "A stray cat follows you for a block. For a moment, things are fine."),
+]

@@ -1,0 +1,8 @@
+[package]
+name = "greycity"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+greycity-sim = { path = "../sim" }
+macroquad = "0.4"

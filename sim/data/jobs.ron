@@ -1,0 +1,48 @@
+// Every job in the city. Edit freely - the game reads this at startup.
+//   tier:        0 = bottom of the ladder ... 5 = the people who never see the bottom
+//   building:    which kind of building the job is at
+//   spot:        where in the building they stand (Desk, Boss, Kitchen, Counter, Floor, Door)
+//   start/hours: shift start hour (0-23) and length; shifts may wrap past midnight
+//   wage:        paid per completed shift
+//   slots:       how many people can hold this job
+//   promotes_to: the next rung, if there is one
+//   role:        special behaviour (Cop, Firefighter, Medic, Cook, Janitor, Cashier, Bartender, Security)
+[
+    // --- Diner ---
+    (name: "Dishwasher",        tier: 0, building: Diner, spot: Kitchen, start: 10, hours: 8,  wage: 48,  slots: 1, promotes_to: Some("Line Cook")),
+    (name: "Line Cook",         tier: 1, building: Diner, spot: Kitchen, start: 6,  hours: 8,  wage: 70,  slots: 2, role: Cook),
+    (name: "Server",            tier: 1, building: Diner, spot: Counter, start: 7,  hours: 8,  wage: 58,  slots: 2),
+
+    // --- Office tower: the ladder ---
+    (name: "Janitor",           tier: 0, building: Office, spot: Floor, start: 18, hours: 8,  wage: 50,  slots: 2, promotes_to: Some("Clerk"), role: Janitor),
+    (name: "Security Guard",    tier: 1, building: Office, spot: Door,  start: 20, hours: 10, wage: 72,  slots: 1, role: Security),
+    (name: "Clerk",             tier: 2, building: Office, spot: Desk,  start: 9,  hours: 8,  wage: 90,  slots: 3, promotes_to: Some("Office Associate")),
+    (name: "Office Associate",  tier: 3, building: Office, spot: Desk,  start: 9,  hours: 9,  wage: 135, slots: 3, promotes_to: Some("Regional Manager")),
+    (name: "Regional Manager",  tier: 4, building: Office, spot: Boss,  start: 8,  hours: 10, wage: 240, slots: 1, promotes_to: Some("Vice President")),
+    (name: "Vice President",    tier: 5, building: Office, spot: Boss,  start: 10, hours: 6,  wage: 520, slots: 1),
+
+    // --- Clinic ---
+    (name: "Receptionist",      tier: 1, building: Clinic, spot: Counter, start: 8, hours: 8,  wage: 66,  slots: 1),
+    (name: "Nurse",             tier: 2, building: Clinic, spot: Floor,   start: 7, hours: 12, wage: 115, slots: 2, role: Medic),
+    (name: "Doctor",            tier: 4, building: Clinic, spot: Desk,    start: 9, hours: 10, wage: 300, slots: 1, role: Medic),
+
+    // --- Civic station: police and fire ---
+    (name: "Beat Cop",          tier: 2, building: CivicStation, spot: Desk,  start: 6,  hours: 8,  wage: 110, slots: 2, promotes_to: Some("Detective"), role: Cop),
+    (name: "Night Cop",         tier: 2, building: CivicStation, spot: Desk,  start: 22, hours: 8,  wage: 120, slots: 2, promotes_to: Some("Detective"), role: Cop),
+    (name: "Detective",         tier: 3, building: CivicStation, spot: Desk,  start: 10, hours: 9,  wage: 160, slots: 1, role: Cop),
+    (name: "Firefighter",       tier: 2, building: CivicStation, spot: Floor, start: 8,  hours: 12, wage: 105, slots: 2, role: Firefighter),
+    (name: "Night Firefighter", tier: 2, building: CivicStation, spot: Floor, start: 20, hours: 12, wage: 110, slots: 1, role: Firefighter),
+
+    // --- Bar ---
+    (name: "Bartender",         tier: 1, building: Bar, spot: Counter, start: 17, hours: 9, wage: 60, slots: 2, role: Bartender),
+    (name: "Bouncer",           tier: 1, building: Bar, spot: Door,    start: 20, hours: 7, wage: 65, slots: 1, role: Security),
+
+    // --- Corner store ---
+    (name: "Stocker",           tier: 0, building: Store, spot: Floor,   start: 6,  hours: 8, wage: 45, slots: 1, promotes_to: Some("Cashier")),
+    (name: "Cashier",           tier: 1, building: Store, spot: Counter, start: 8,  hours: 8, wage: 55, slots: 1, role: Cashier),
+    (name: "Night Cashier",     tier: 1, building: Store, spot: Counter, start: 16, hours: 8, wage: 58, slots: 1, role: Cashier),
+
+    // --- Warehouse ---
+    (name: "Laborer",           tier: 0, building: Warehouse, spot: Floor, start: 6, hours: 9, wage: 52,  slots: 4, promotes_to: Some("Shift Supervisor")),
+    (name: "Shift Supervisor",  tier: 2, building: Warehouse, spot: Desk,  start: 6, hours: 9, wage: 100, slots: 1),
+]
